@@ -1,5 +1,9 @@
 <launch>
   <param name="use_gui" value="true"/>
   <arg name="config" default="robot" />
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ridgeback_viz)/rviz/$(arg config).rviz" />
+  <arg name="namespace" default="/"/>
+
+  <group ns="$(arg namespace)">
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ridgeback_viz)/rviz/$(arg config).rviz" />
+  </group>
 </launch>
